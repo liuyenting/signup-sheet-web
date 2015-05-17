@@ -122,7 +122,7 @@
 	<div id = "right_table">
 		<?php
 			
-			echo '<form name="form" method="post" action="test.php" onSubmit="whenSubmit()"><br/>
+			echo '<form name="form" method="post" action="signup-sheet.php" onSubmit="whenSubmit()"><br/>
 			<Select name="date" method="get" onChange="this.form.submit()">
 				<Option Value="' . $inputDate . '">' . $inputDate . '</Option>
 				<Option Value="0513">0513</Option>
