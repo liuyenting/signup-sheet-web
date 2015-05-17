@@ -27,7 +27,6 @@
 </head>
 
 <body>
-	<h1 align="center"> What's in the database? </h1>
 	
 	<center>
 	<?php
@@ -78,7 +77,7 @@
 		
 		ob_end_flush();
 		
-		echo "current collection: " . $cName . '<br/>';
+		echo '<h1>Date : ' . $inputDate . '&nbsp &nbsp Track : ' . $inputTrack . '</h1>';
 	
 		$connection = new MongoClient();
 		$db = $connection->$dbname;
@@ -88,12 +87,11 @@
 
 		$cursor = $collection->find();
 		
-		echo $cursor->count() . ' documents found <br/><br/>';
 		echo '<table border="1" width="500" cellpadding="10" style="font-size:18px;" align="center"';
 			echo '<tr>';
-				echo '<td>Name</td>';
-				echo '<td>Signed</td>';
-				echo '<td>Date</td>';
+				echo '<td align="center">Name</td>';
+				echo '<td align="center">Signed</td>';
+				echo '<td align="center">Date</td>';
 			echo '</tr>';
 			
 		$countSigned = 0;
@@ -104,9 +102,9 @@
 					$countSigned = $countSigned + 1;
 				}
 				echo '<tr>';
-					echo '<td>' . $username["name"] . '</td>';
-					echo '<td>' . $obj["signed"] . '</td>';
-					echo '<td>' . $obj["date"] . '</td>';
+					echo '<td align="center">' . $username["name"] . '</td>';
+					echo '<td align="center">' . $obj["signed"] . '</td>';
+					echo '<td align="center">' . $obj["date"] . '</td>';
 				echo "</tr>";
 			}
 		}
@@ -140,14 +138,9 @@
 				
 			echo '</Select><br/><br/>
 			<input type="submit" value="送出表單">
-			</form><br/>
-			您選擇的是:';
-			
-			if($isSubmit){
-				echo $inputDate.$inputTrack;
-			}
-		
+			</form><br/>';
 		?>
+		
 	</center>
 </body>
 </html>
