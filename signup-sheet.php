@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <title> Displaying DB </title>
@@ -27,9 +27,9 @@
 </head>
 
 <body>
-	<div id = "left_form">
-	<h1> What's in the database? </h1>
+	<h1 align="center"> What's in the database? </h1>
 	
+	<center>
 	<?php
 		ob_start();
 		
@@ -89,7 +89,7 @@
 		$cursor = $collection->find();
 		
 		echo $cursor->count() . ' documents found <br/><br/>';
-		echo '<table border="1" width="500" cellpadding="10" style="font-size:18px;"';
+		echo '<table border="1" width="500" cellpadding="10" style="font-size:18px;" align="center"';
 			echo '<tr>';
 				echo '<td>Name</td>';
 				echo '<td>Signed</td>';
@@ -112,29 +112,25 @@
 		}
 		
 		echo '<tr>
-			<td>總簽到人數</td>
-			<td>' . $countSigned . '</td>
+			<td align="center">總簽到人數</td>
+			<td align="center">' . $countSigned . '</td>
 			</tr>';
-		echo '</table>';
-	?>
-	</div>
+		echo '<br/></table><br/><br/>';
 	
-	<div id = "right_table">
-		<?php
 			
 			echo '<form name="form" method="post" action="signup-sheet.php" onSubmit="whenSubmit()"><br/>
-			<Select name="date" method="get" onChange="this.form.submit()">
+			<Select name="date" method="get" style="font-size:18px;" onChange="this.form.submit()">
 				<Option Value="' . $inputDate . '">' . $inputDate . '</Option>
 				<Option Value="0513">0513</Option>
 				<Option Value="0514">0514</Option>
 				<Option Value="0515">0515</Option>
 				<Option Value="0516">0516</Option>
 				<Option Value="0517">0517</Option>
-			</Select><br/><br/>';
+			</Select>  ';
 			if(isset($_POST['date'])){
 				$searchTrack = $collection->find(array('Time'=>$_POST['date']));
 			}
-				echo '<Select name="track" method="get">';
+				echo '<Select name="track" method="get" style="font-size:18px;">';
 				echo '<Option Value="' . $inputTrack . '">' . $inputTrack . '</Option>';
 				echo '<Option Value="track1">Track 1</Option>
 				<Option Value="track2">Track 2</Option>
@@ -148,11 +144,10 @@
 			您選擇的是:';
 			
 			if($isSubmit){
-				echo $inputTotal;
+				echo $inputDate.$inputTrack;
 			}
 		
 		?>
-	</div>
-	
+	</center>
 </body>
 </html>
